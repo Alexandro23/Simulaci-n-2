@@ -1,0 +1,30 @@
+import random
+from random import random
+import math as m
+
+'''
+SE lanza una moneda y se esperan solo 2 resultados: Sol y águila.
+'''
+#a) y b)
+n=1000
+count1=0
+count2=0
+for i in range(0,n):
+    t = random()
+    if t >=0.5:
+        count1+=1
+    else:
+        count2+=1
+
+print('Sol =',count1,'->', count1/n, '\n' 'Aguila=',count2,'->',count2/n)
+
+#c)
+#Probabilidad de que ocurra sol en un volado
+r=2 #resultados posibles
+m=1 #numero de intentos 
+for j in range(m):
+    g= random()
+    if g >=0.5:
+        print('La probabilidad de que ocurra aguila es:',m/r) #para aguila
+    else:
+        print('La probabilidad de que ocurra sol es:',m/r) #para sol
