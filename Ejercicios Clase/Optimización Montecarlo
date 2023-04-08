@@ -1,0 +1,40 @@
+import math 
+import numpy as np
+import random as rd
+    #Ejemplo: caclular \int(0,1) raiz(arctan(x)) dx
+
+
+def func(num):
+    sum0 = 0
+    sum1 = 0
+    for i in range(0,num):
+        r = m.sqrt(np.arctan(rd.random()))
+        sum0+=r
+        sum1+=1
+    
+    Media_1 = sum0/sum1
+    print('La aproximancion de la integral es:', Media_1 )
+    
+func(100000)
+
+
+# Minimizar  f(x) = x^4 / 4 - (17x^3)/36 + (5x^2)/24 en [-0.5, 1.5]
+
+
+def gen(w):
+    
+    f0 = 100000
+    x0 = -5
+
+    for i in range(0,w):
+        x = rd.uniform(-0.5,1.5)
+        f1 = ((x)**4)/4 - (17*(x)**3)/36 + (5*(x)**2)/24
+        f2 = f1
+        if f1<f0:
+            f0=f2
+            x0=x
+        else:
+            pass 
+    print('el mínimo es:', '(',x0, ',', f0,')' )
+        
+gen(1000)
