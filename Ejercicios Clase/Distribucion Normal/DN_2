@@ -1,0 +1,46 @@
+import numpy as np
+import random as rd
+import math as m
+import matplotlib.pyplot as plt
+
+l=[]
+T=[]
+sum=0
+
+for i in range(0,10000):
+    for i in range(0,100):
+        uni=rd.random()
+        l.append(uni)
+        sum+=uni
+    n=len(l)
+    v = np.var(l)
+    me = np.mean(l)
+    ra = m.sqrt(n)
+    Z= (ra*( (me-0.5 )  ))  /  (m.sqrt(v)  )
+    T.append(Z)
+    l=[]
+    sum=0
+print(m.sqrt(v))
+plt.hist(T, bins =30, color='green', rwidth=0.9)
+plt.title('Distribución Normal: 12 Uniformes ')
+plt.xlabel('Numeros aleatorios')
+plt.ylabel('Frecuencia')
+plt.show()
+
+###############################################################################################################
+
+#Creación de variables aleatorias con una distribución Normal
+import random as rd
+import math
+import matplotlib.pyplot as plt
+o=[]
+for i in range(100):
+    o.append(rd.normalvariate(0.5,0.2877576331759068))
+    
+
+    #Creación del Histograma
+plt.hist(T, bins =40, color='green', rwidth=0.9)
+plt.title('Distribución Normal: 12 Uniformes ')
+plt.xlabel('Numeros aleatorios')
+plt.ylabel('Frecuencia')
+plt.show()
