@@ -1,0 +1,31 @@
+import math
+import random as rd
+
+#solución con random
+for i in range(0,5):
+    h=rd.random()
+    print(h,end='  ')
+    if h>=0 and h<0.2:
+        print('blanco \n',end=' ')
+    elif h>=0.2 and h<0.4:
+        print('negro\n',end=' ')
+    elif h>=0.4 and h<0.6:
+        print('rojo\n', end=' ')
+    elif h>=0.6 and h<0.8:
+        print('azul\n', end=' ')
+    else:
+        print('Verde\n', end=' ')
+        
+#Solucion con randint        
+for kk in range(0,5):
+    g=rd.randint(1,5)
+    if g==1:
+        print('blanco \n',end=' ')
+    elif g==2:
+        print('negro\n',end=' ')
+    elif g==3:
+        print('rojo\n', end=' ')
+    elif g==4:
+        print('azul\n', end=' ')
+    else:
+        print('Verde\n', end=' ')
