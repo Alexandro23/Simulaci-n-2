@@ -1,0 +1,23 @@
+import numpy as np
+import random as rd
+import math as m
+import matplotlib.pyplot as plt
+
+l=[]
+T=[]
+sum=0
+for i in range(0,10000):
+    for i in range(0,12):
+        uni=rd.random()
+        l.append(uni)
+        sum+=uni
+    Z=sum-6
+    T.append(Z)
+    l=[]
+    sum=0
+
+plt.hist(T, bins =30, color='green', rwidth=0.9)
+plt.title('Distribución Normal: 12 Uniformes ')
+plt.xlabel('Numeros aleatorios')
+plt.ylabel('Frecuencia')
+plt.show()
