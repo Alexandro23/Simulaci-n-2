@@ -1,4 +1,4 @@
-# Simulaci-n-2
+## Simulation II
 
 Activities and tasks for the Simulation II course.
 
