@@ -1,0 +1,65 @@
+
+from random import random
+import matplotlib.pyplot as plt
+
+
+'''
+Hacer el programa de lo anterior.
+
+Solo necesito el benecifio promedio por el el numero de días, cual es el que voy a graficar
+'''
+
+#Precio unitario de venta
+puv= 1.10
+#Costo Unitario de adquisición 
+cuad= 0.90
+#Coste unitario de reciclaje
+cure= 0.10
+# Coste venta perdida 
+cvp= 0.20 
+#pedido 
+pedido = 50
+
+#Almanecar datos
+Bene=[]
+Bene_prom=[]
+count=0 
+
+
+for uno in range(0,500):
+    ale=random()
+    #print(ale)
+    if ale>= 0.0 and ale<=0.19:
+        veta_simu= 30
+    elif ale>= 0.20 and ale<0.44:
+        veta_simu= 40
+    elif ale>= 0.45 and ale<0.69:
+        veta_simu= 50
+    elif ale>= 0.70 and ale<0.89:
+        veta_simu= 60
+    else:
+        veta_simu= 70
+        
+    if veta_simu > pedido:
+        ventas_reales = pedido
+        ventas_perdidas = veta_simu - pedido
+        perio_no_ven = 0
+    else:
+        ventas_reales = veta_simu
+        ventas_perdidas=0
+        perio_no_ven = pedido - ventas_reales
+    
+    Beneficio =  (puv * ventas_reales) - (cuad * pedido) - (cure * perio_no_ven) - ( cvp * ventas_perdidas)
+    count+=1
+    Bene.append(Beneficio)
+    Sum = sum(Bene)
+    prom=Sum/count
+    Bene_prom.append(prom)
+
+
+fig = plt.figure(1, figsize=(10, 9))        
+plt.plot(Bene_prom, color="red", markersize=1)
+plt.xlabel("Día")
+plt.ylabel("Beneficio prom")
+plt.grid()
+plt.show()
