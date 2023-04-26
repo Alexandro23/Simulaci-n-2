@@ -1,0 +1,60 @@
+''' SERPIENTES Y ESCALERAS'''
+
+import math as m
+import numpy as np
+import random as rd
+
+#Definimos el tablero
+Total=20
+Pos=0
+
+for i in range(0,20):
+    #=========================Simulamos el lanzamiento de un dado==========================================#
+    dado = rd.random()
+    if dado >=0 and dado < 1/6:
+        dado = 1
+    elif dado >= 1/6 and dado < 2/6:
+        dado =2
+    elif dado >= 2/6 and dado < 3/6:
+        dado =3
+    elif dado >= 3/6 and dado < 4/6:
+        dado = 4
+    elif dado >= 4/6 and dado < 5/6:
+        dado = 5
+    else:
+        dado=6
+
+    print('Dado =',dado)
+    #==============Posicion====================#
+    Pos = Pos + dado
+    #===========Empezar a jugar========#
+    if Pos == 20:
+        print('Has ganado.')
+        break
+    elif Pos> 20:
+        print('Te has pasado')
+        Pos = (Total+1)+(Total - Pos)
+        if Pos == 3:
+            Pos = 11
+        elif Pos == 13:
+            Pos = 4
+        elif Pos == 15:
+            Pos = 19
+        elif Pos == 17:
+            Pos = 10
+        else:
+            pass
+    else:
+        if Pos == 3:
+            Pos = 11
+        elif Pos == 13:
+            Pos = 4
+        elif Pos == 15:
+            Pos = 19
+        elif Pos == 17:
+            Pos = 10
+        else:
+            pass
+
+
+    print('Estas en {0}'.format(Pos))
