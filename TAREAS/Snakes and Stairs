@@ -1,60 +1,87 @@
-''' SERPIENTES Y ESCALERAS'''
+''' SIMULACION SERPIENTES Y ESCALERAS'''
 
 import math as m
 import numpy as np
 import random as rd
 
-#Definimos el tablero
-Total=20
-Pos=0
+def Seryes():
+    #Definimos algunas variables
+    Total=20
+    Pos=0
+    n=1000
+    m=30
+    A=[]
+    for j in range(0,n):
+        cont=0
+        for i in range(0,m):
+            #=========================Simulamos el lanzamiento de un dado==========================================#
+            dado = rd.random()
+            if dado >=0 and dado < 1/6:
+                dado = 1
+            elif dado >= 1/6 and dado < 2/6:
+                dado =2
+            elif dado >= 2/6 and dado < 3/6:
+                dado =3
+            elif dado >= 3/6 and dado < 4/6:
+                dado = 4
+            elif dado >= 4/6 and dado < 5/6:
+                dado = 5
+            else:
+                dado=6
 
-for i in range(0,20):
-    #=========================Simulamos el lanzamiento de un dado==========================================#
-    dado = rd.random()
-    if dado >=0 and dado < 1/6:
-        dado = 1
-    elif dado >= 1/6 and dado < 2/6:
-        dado =2
-    elif dado >= 2/6 and dado < 3/6:
-        dado =3
-    elif dado >= 3/6 and dado < 4/6:
-        dado = 4
-    elif dado >= 4/6 and dado < 5/6:
-        dado = 5
-    else:
-        dado=6
+            #print('Dado =',dado)
+            #==============Posicion====================#
+            Pos = Pos + dado
+            #===========Empezar a jugar========#
+            if Pos == 20:
+                #print('Has ganado.')
+                cont+=1
+                break
+            elif Pos> 20:
+                #print('Te has pasado')
+                Pos = (Total)+(Total - Pos) #(Total+1)+(Total - Pos)
+                if Pos == 3:
+                    Pos = 11
+                elif Pos == 13:
+                    Pos = 4
+                elif Pos == 15:
+                    Pos = 19
+                elif Pos == 17:
+                    Pos = 10
+                else:
+                    pass
+                cont+=1
+            else:
+                if Pos == 3:
+                    Pos = 11
+                elif Pos == 13:
+                    Pos = 4
+                elif Pos == 15:
+                    Pos = 19
+                elif Pos == 17:
+                    Pos = 10
+                else:
+                    pass
+                cont+=1
 
-    print('Dado =',dado)
-    #==============Posicion====================#
-    Pos = Pos + dado
-    #===========Empezar a jugar========#
-    if Pos == 20:
-        print('Has ganado.')
-        break
-    elif Pos> 20:
-        print('Te has pasado')
-        Pos = (Total+1)+(Total - Pos)
-        if Pos == 3:
-            Pos = 11
-        elif Pos == 13:
-            Pos = 4
-        elif Pos == 15:
-            Pos = 19
-        elif Pos == 17:
-            Pos = 10
-        else:
-            pass
-    else:
-        if Pos == 3:
-            Pos = 11
-        elif Pos == 13:
-            Pos = 4
-        elif Pos == 15:
-            Pos = 19
-        elif Pos == 17:
-            Pos = 10
-        else:
-            pass
+            A.append(cont)
 
 
-    print('Estas en {0}'.format(Pos))
+            #print('Estas en {0}'.format(Pos))
+
+    #count1=cont/n
+    S=np.mean(A)
+    #print('Fue en {} pasos en promedio'.format(S))
+    return S
+    
+
+#media de medias
+um=10
+Fors=0
+for h in range(0,um):
+    ent=Seryes()
+    Fors+=ent
+    
+final= Fors/um
+
+print('Fue en {} pasos en promedio de los promedios'.format(final))
